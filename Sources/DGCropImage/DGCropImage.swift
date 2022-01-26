@@ -17,7 +17,7 @@ public func cropViewController(image: UIImage,
 }
 
 public func cropCustomizableViewController(image: UIImage,
-                                           config: Mantis.Config = Mantis.Config(),
+                                           config: DGCropImage.Config = DGCropImage.Config(),
                                            cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) -> CropViewController {
     return CropViewController(image: image,
                               config: config,
@@ -26,7 +26,7 @@ public func cropCustomizableViewController(image: UIImage,
 }
 
 public func locateResourceBundle(by hostClass: AnyClass) {
-    LocalizedHelper.setBundle(Bundle(for: hostClass))
+//    LocalizedHelper.setBundle(Bundle(for: hostClass))
 }
 
 @available(*, deprecated, renamed: "crop(image:by:)")
@@ -125,7 +125,7 @@ public enum FixRatiosShowType {
 
 // MARK: - Localization
 public class LocalizationConfig {
-    public var bundle: Bundle? = Mantis.Config.bundle
+    public var bundle: Bundle? = DGCropImage.Config.bundle
     public var tableName = "MantisLocalizable"
 }
 
@@ -154,7 +154,7 @@ public struct Config {
     public var showRotationDial = true
     public var dialConfig = DialConfig()
     public var cropToolbarConfig = CropToolbarConfig()
-    public private(set) var localizationConfig = Mantis.localizationConfig
+    public private(set) var localizationConfig = DGCropImage.localizationConfig
 
     var customRatios: [(width: Int, height: Int)] = []
 
