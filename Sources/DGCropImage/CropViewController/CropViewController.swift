@@ -420,7 +420,6 @@ public class CropViewController: UIViewController {
             delegate?.cropViewControllerDidFailToCrop(self, original: cropView.image)
             return
         }
-        
         self.delegate?.cropViewControllerDidCrop(self,
                                                  cropped: image,
                                                  transformation: cropResult.transformation,
@@ -503,10 +502,12 @@ extension CropViewController: CropViewDelegate {
 extension CropViewController: CropToolbarDelegate {
     public func didSelectCancel() {
         handleCancel()
+        self.dismiss(animated: true)
     }
     
     public func didSelectCrop() {
         handleCrop()
+        self.dismiss(animated: true)
     }
     
     public func didSelectCounterClockwiseRotate() {
