@@ -17,7 +17,7 @@ public func crop(image: UIImage,
 }
 
 public func locateResourceBundle(by hostClass: AnyClass) {
-//    LocalizedHelper.setBundle(Bundle(for: hostClass))
+    LocalizedHelper.setBundle(Bundle(for: hostClass))
 }
 
 @available(*, deprecated, renamed: "crop(image:by:)")
