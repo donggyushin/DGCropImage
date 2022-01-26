@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "DGCropImage",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v12)
     ],
@@ -23,7 +24,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DGCropImage",
-            dependencies: []),
+            dependencies: [],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "DGCropImageTests",
             dependencies: ["DGCropImage"]),

@@ -45,7 +45,7 @@ class CropView: UIView {
     // Referred to in extension
     let imageContainer: ImageContainer
     let gridOverlayView: CropOverlayView
-    var rotationDial: RotationDial?
+//    var rotationDial: RotationDial?
 
     lazy var scrollView = CropScrollView(frame: bounds)
     lazy var cropMaskViewManager = CropMaskViewManager(with: self,
@@ -114,14 +114,14 @@ class CropView: UIView {
         case .degree90Rotating:
             cropMaskViewManager.showVisualEffectBackground()
             gridOverlayView.isHidden = true
-            rotationDial?.isHidden = true
+//            rotationDial?.isHidden = true
         case .touchImage:
             cropMaskViewManager.showDimmingBackground()
             gridOverlayView.gridLineNumberType = .crop
             gridOverlayView.setGrid(hidden: false, animated: true)
         case .touchCropboxHandle(let tappedEdge):
             gridOverlayView.handleEdgeTouched(with: tappedEdge)
-            rotationDial?.isHidden = true
+//            rotationDial?.isHidden = true
             cropMaskViewManager.showDimmingBackground()
         case .touchRotationBoard:
             gridOverlayView.gridLineNumberType = .rotate
@@ -129,7 +129,7 @@ class CropView: UIView {
             cropMaskViewManager.showDimmingBackground()
         case .betweenOperation:
             gridOverlayView.handleEdgeUntouched()
-            rotationDial?.isHidden = false
+//            rotationDial?.isHidden = false
             adaptAngleDashboardToCropBox()
             cropMaskViewManager.showVisualEffectBackground()
             checkImageStatusChanged()
@@ -231,54 +231,54 @@ class CropView: UIView {
             return
         }
         
-        if rotationDial != nil {
-            rotationDial?.removeFromSuperview()
-        }
+//        if rotationDial != nil {
+//            rotationDial?.removeFromSuperview()
+//        }
 
-        let boardLength = min(bounds.width, bounds.height) * 0.6
-        let rotationDial = RotationDial(frame: CGRect(x: 0, y: 0, width: boardLength, height: angleDashboardHeight), dialConfig: dialConfig)
-        self.rotationDial = rotationDial
-        rotationDial.isUserInteractionEnabled = true
-        addSubview(rotationDial)
+//        let boardLength = min(bounds.width, bounds.height) * 0.6
+//        let rotationDial = RotationDial(frame: CGRect(x: 0, y: 0, width: boardLength, height: angleDashboardHeight), dialConfig: dialConfig)
+//        self.rotationDial = rotationDial
+//        rotationDial.isUserInteractionEnabled = true
+//        addSubview(rotationDial)
         
-        rotationDial.setRotationCenter(by: gridOverlayView.center, of: self)
-        
-        rotationDial.didRotate = { [unowned self] angle in
-            if self.forceFixedRatio {
-                let newRadians = self.viewModel.getTotalRadias(by: angle.radians)
-                self.viewModel.setRotatingStatus(by: CGAngle(radians: newRadians))
-            } else {
-                self.viewModel.setRotatingStatus(by: angle)
-            }
-        }
-        
-        rotationDial.didFinishedRotate = { [unowned self] in
-            self.viewModel.setBetweenOperationStatus()
-        }
-        
-        rotationDial.rotateDialPlate(by: CGAngle(radians: viewModel.radians))
+//        rotationDial.setRotationCenter(by: gridOverlayView.center, of: self)
+//
+//        rotationDial.didRotate = { [unowned self] angle in
+//            if self.forceFixedRatio {
+//                let newRadians = self.viewModel.getTotalRadias(by: angle.radians)
+//                self.viewModel.setRotatingStatus(by: CGAngle(radians: newRadians))
+//            } else {
+//                self.viewModel.setRotatingStatus(by: angle)
+//            }
+//        }
+//
+//        rotationDial.didFinishedRotate = { [unowned self] in
+//            self.viewModel.setBetweenOperationStatus()
+//        }
+//
+//        rotationDial.rotateDialPlate(by: CGAngle(radians: viewModel.radians))
         adaptAngleDashboardToCropBox()
     }
     
     private func adaptAngleDashboardToCropBox() {
-        guard let rotationDial = rotationDial else { return }
+//        guard let rotationDial = rotationDial else { return }
         
-        let orientation = UIDevice.current.orientation
-        
-        switch orientation {
-        case .landscapeLeft:
-            rotationDial.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-            rotationDial.frame.origin.x = gridOverlayView.frame.maxX
-            rotationDial.frame.origin.y = gridOverlayView.frame.origin.y + (gridOverlayView.frame.height - rotationDial.frame.height) / 2
-        case .landscapeRight:
-            rotationDial.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-            rotationDial.frame.origin.x = gridOverlayView.frame.minX - rotationDial.frame.width
-            rotationDial.frame.origin.y = gridOverlayView.frame.origin.y + (gridOverlayView.frame.height - rotationDial.frame.height) / 2
-        default:
-            rotationDial.transform = CGAffineTransform(rotationAngle: 0)
-            rotationDial.frame.origin.x = gridOverlayView.frame.origin.x +  (gridOverlayView.frame.width - rotationDial.frame.width) / 2
-            rotationDial.frame.origin.y = gridOverlayView.frame.maxY
-        }
+//        let orientation = UIDevice.current.orientation
+//
+//        switch orientation {
+//        case .landscapeLeft:
+//            rotationDial.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+//            rotationDial.frame.origin.x = gridOverlayView.frame.maxX
+//            rotationDial.frame.origin.y = gridOverlayView.frame.origin.y + (gridOverlayView.frame.height - rotationDial.frame.height) / 2
+//        case .landscapeRight:
+//            rotationDial.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+//            rotationDial.frame.origin.x = gridOverlayView.frame.minX - rotationDial.frame.width
+//            rotationDial.frame.origin.y = gridOverlayView.frame.origin.y + (gridOverlayView.frame.height - rotationDial.frame.height) / 2
+//        default:
+//            rotationDial.transform = CGAffineTransform(rotationAngle: 0)
+//            rotationDial.frame.origin.x = gridOverlayView.frame.origin.x +  (gridOverlayView.frame.width - rotationDial.frame.width) / 2
+//            rotationDial.frame.origin.y = gridOverlayView.frame.maxY
+//        }
     }
     
     func updateCropBoxFrame(with point: CGPoint) {
@@ -687,7 +687,7 @@ extension CropView {
     func reset() {
         scrollView.removeFromSuperview()
         gridOverlayView.removeFromSuperview()
-        rotationDial?.removeFromSuperview()
+//        rotationDial?.removeFromSuperview()
         
         if forceFixedRatio {
             aspectRatioLockEnabled = true
@@ -708,7 +708,7 @@ extension CropView {
     fileprivate func setRotation(byRadians radians: CGFloat) {
         scrollView.transform = CGAffineTransform(rotationAngle: radians)
         updatePosition(by: radians)
-        rotationDial?.rotateDialPlate(to: CGAngle(radians: radians), animated: false)
+//        rotationDial?.rotateDialPlate(to: CGAngle(radians: radians), animated: false)
     }
     
 
@@ -758,7 +758,7 @@ extension CropView {
         }
 
         if (rotateDial) {
-            rotationDial?.rotateDialPlate(by: CGAngle(radians: viewModel.radians))
+//            rotationDial?.rotateDialPlate(by: CGAngle(radians: viewModel.radians))
             adaptAngleDashboardToCropBox()
         }
     }
