@@ -19,7 +19,6 @@ extension CropView: UIScrollViewDelegate {
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         // A resize event has begun via gesture on the photo (scrollview), so notify delegate
-        self.delegate?.cropViewDidBeginResize(self)
         viewModel.setTouchImageStatus()
     }
     
@@ -28,7 +27,6 @@ extension CropView: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        self.delegate?.cropViewDidEndResize(self)
         makeSureImageContainsCropOverlay()
         
         manualZoomed = true

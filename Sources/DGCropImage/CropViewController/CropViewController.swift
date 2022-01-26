@@ -14,15 +14,10 @@ public protocol CropViewControllerDelegate: AnyObject {
                                    cropInfo: CropInfo)
     func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage)
     func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage)
-    
-    func cropViewControllerDidBeginResize(_ cropViewController: CropViewController)
-    func cropViewControllerDidEndResize(_ cropViewController: CropViewController, original: UIImage, cropInfo: CropInfo)
 }
 
 public extension CropViewControllerDelegate where Self: UIViewController {
     func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage) {}
-    func cropViewControllerDidBeginResize(_ cropViewController: CropViewController) {}
-    func cropViewControllerDidEndResize(_ cropViewController: CropViewController, original: UIImage, cropInfo: CropInfo) {}
 }
 
 public enum CropViewControllerMode {
@@ -488,14 +483,6 @@ extension CropViewController: CropViewDelegate {
     
     func cropViewDidBecomeUnResettable(_ cropView: CropView) {
         cropToolbar.handleCropViewDidBecomeUnResettable()
-    }
-    
-    func cropViewDidBeginResize(_ cropView: CropView) {
-        delegate?.cropViewControllerDidBeginResize(self)
-    }
-    
-    func cropViewDidEndResize(_ cropView: CropView) {
-        delegate?.cropViewControllerDidEndResize(self, original: cropView.image, cropInfo: cropView.getCropInfo())
     }
 }
 
