@@ -7,6 +7,10 @@
 import Foundation
 extension String {
     var localized: String {
-        return NSLocalizedString(self, tableName: "Localizable", bundle: .module, value: "", comment: "")
+        if let bundle = bundle {
+            return NSLocalizedString(self, tableName: "Localizable", bundle: bundle, value: "", comment: "")
+        } else {
+            return NSLocalizedString(self, tableName: "Localizable", bundle: .module, value: "", comment: "")
+        }
     }
 }
