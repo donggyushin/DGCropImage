@@ -126,7 +126,7 @@ public enum FixRatiosShowType {
 // MARK: - Localization
 public class LocalizationConfig {
     public var bundle: Bundle? = DGCropImage.Config.bundle
-    public var tableName = "MantisLocalizable"
+    public var tableName = "Localizable"
 }
 
 // MARK: - CropToolbarConfig
