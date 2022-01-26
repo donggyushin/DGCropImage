@@ -35,7 +35,7 @@ struct LocalizedHelper {
             comment: ""
         )
 #else
-        guard let bundle = LocalizedHelper.bundle ?? (localizationConfig.bundle ?? Mantis.bundle) else {
+        guard let bundle = LocalizedHelper.bundle ?? (localizationConfig.bundle ?? DGCropImage.bundle) else {
             return value
         }
         

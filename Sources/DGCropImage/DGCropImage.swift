@@ -150,7 +150,7 @@ public struct Config {
     var customRatios: [(width: Int, height: Int)] = []
 
     static private var bundleIdentifier: String = {
-        return "com.echo.framework.Mantis"
+        return "com.donggyushin.DGCropImage"
     }()
 
     static private(set) var bundle: Bundle? = {
@@ -158,7 +158,7 @@ public struct Config {
             return nil
         }
 
-        if let url = bundle.url(forResource: "MantisResources", withExtension: "bundle") {
+        if let url = bundle.url(forResource: "DGCropImageResources", withExtension: "bundle") {
             let bundle = Bundle(url: url)
             return bundle
         }

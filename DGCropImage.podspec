@@ -12,4 +12,7 @@ Pod::Spec.new do |s|
     s.resource_bundles = {
     "DGCropImageResources" => ["Sources/**/*.lproj/*.strings"]
     }
+    s.pod_target_xcconfig = {
+    "PRODUCT_BUNDLE_IDENTIFIER": "com.donggyushin.DGCropImage"
+    }
   end
