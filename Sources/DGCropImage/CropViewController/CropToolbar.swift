@@ -55,7 +55,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCancelButton() {
-        let cancelText = "Cancel"
+        let cancelText = "cancel".localized
 
         cancelButton = createOptionButton(withTitle: cancelText, andAction: #selector(cancel))
     }
@@ -91,7 +91,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCropButton() {
-        let doneText = "Done"
+        let doneText = "done".localized
         cropButton = createOptionButton(withTitle: doneText, andAction: #selector(crop))
     }
 
