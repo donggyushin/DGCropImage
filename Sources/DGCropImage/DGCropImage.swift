@@ -7,7 +7,7 @@ private(set) var bundle: Bundle? = {
 internal var localizationConfig = LocalizationConfig()
 
 // MARK: - APIs
-public func cropViewController(image: UIImage,
+public func crop(image: UIImage,
                                config: DGCropImage.Config = DGCropImage.Config(),
                                cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) -> CropViewController {
     return CropViewController(image: image,
