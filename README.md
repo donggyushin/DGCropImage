@@ -20,7 +20,7 @@ File > Add Packages > https://github.com/donggyushin/DGCropImage
 
 ### CocoaPod
 ```
-pod 'DGCropImage', :git => 'https://github.com/donggyushin/DGCropImage'
+pod 'DGCropImage', :git => 'https://github.com/donggyushin/DGCropImage.git'
 ```
 
 ## Usage
